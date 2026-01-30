@@ -3,13 +3,28 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Online Distribution Brand Colors */
+  --od-dark-blue: #003B5C;
+  --od-mid-blue: #2B84B1;
+  --od-light-blue: #7BAFD4;
+  --od-bright-blue: #52B8E8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-outfit-sans);
+  --font-lato: var(--font-lato-sans);
+
+  /* Brand Colors */
+  --color-od-dark-blue: var(--od-dark-blue);
+  --color-od-mid-blue: var(--od-mid-blue);
+  --color-od-light-blue: var(--od-light-blue);
+  --color-od-bright-blue: var(--od-bright-blue);
+
+  /* Gradients */
+  --image-od-gradient: linear-gradient(to right, var(--od-dark-blue), var(--od-mid-blue));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +37,4 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
