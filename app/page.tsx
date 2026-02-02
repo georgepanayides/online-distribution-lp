@@ -1,5 +1,12 @@
 
 import { PageHero } from "@/components/sections/PageHero";
+import { BrandsTicker } from "@/components/sections/BrandsTicker";
+import { CompanyStats } from "@/components/sections/CompanyStats";
+import { CommandCenter } from "@/components/sections/CommandCenter";
+import { WarehouseBlueprint } from "@/components/sections/WarehouseBlueprint";
+import { Integrations } from "@/components/sections/Integrations";
+import { ComplianceGrid } from "@/components/sections/ComplianceGrid";
+import { Locations } from "@/components/sections/Locations";
 
 export default function Home() {
   return (
@@ -13,6 +20,13 @@ export default function Home() {
         background_image="/images/PH1-Aisle-No-People-.jpg"
         hero_graphic="3pl-animation"
         />
+        <BrandsTicker />
+        <CompanyStats />
+        <CommandCenter />
+        <WarehouseBlueprint />
+        <Integrations />
+        <ComplianceGrid />
+        <Locations />
     </main>
   );
 }
