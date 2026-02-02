@@ -70,7 +70,7 @@ export function CommandCenter() {
            {/* Decorative 'Behind' Elements to ground the mockup */}
            <div className="absolute -inset-4 bg-gradient-to-r from-od-light-blue/20 to-od-mid-blue/10 rounded-2xl blur-2xl -z-10 opacity-60" />
            
-           <ClientPortalDashboard />
+           {/* <ClientPortalDashboard /> */}
         </div>
 
       </div>

@@ -2,116 +2,157 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Database, Package, Truck, ScanBarcode, ArrowRight, type LucideIcon } from "lucide-react";
-
-// Animation Variants
-const pathVariants = {
-  hidden: { pathLength: 0, opacity: 0 },
-  visible: { 
-    pathLength: 1, 
-    opacity: 1,
-    transition: { duration: 1.5, ease: "easeInOut" }
-  }
-};
-
-const pulseVariants = {
-  idle: { scale: 1, opacity: 0.5 },
-  active: { 
-    scale: [1, 1.2, 1], 
-    opacity: 1,
-    transition: { duration: 0.4 } 
-  }
-};
-
-const NodeIcon = ({ icon: Icon, label, active }: { icon: LucideIcon, label: string, active: boolean }) => (
-  <div className="flex flex-col items-center gap-3 relative z-10">
-    <motion.div 
-      animate={active ? { borderColor: "var(--color-od-mid-blue)", backgroundColor: "#ffffff" } : { borderColor: "#e2e8f0", backgroundColor: "#f8fafc" }}
-      className="w-16 h-16 rounded-xl border-2 flex items-center justify-center transition-colors duration-300 relative bg-white"
-    >
-      <Icon className={`w-6 h-6 ${active ? 'text-od-mid-blue' : 'text-gray-400'}`} />
-      
-      {/* Active Glow */}
-      {active && (
-        <motion.div 
-          layoutId="active-glow"
-          className="absolute inset-0 rounded-xl bg-od-mid-blue/10" 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        />
-      )}
-    </motion.div>
-    <div className={`text-xs font-bold uppercase tracking-widest transition-colors duration-300 ${active ? 'text-od-dark-blue' : 'text-gray-400'}`}>
-      {label}
-    </div>
-  </div>
-);
 
 export function ProcessSchematic() {
-  const [step, setStep] = React.useState(0);
-
-  // Cycle through steps to simulate the package flow
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setStep((prev) => (prev + 1) % 5); // 5 states: 0=start, 1-4=nodes
-    }, 2000);
-    return () => clearInterval(timer);
-  }, []);
-
+  // Static view, no movement duration needed
+  
   return (
-    <div className="w-full h-[300px] md:h-[180px] relative flex flex-col md:flex-row items-center justify-between max-w-4xl mx-auto px-8 md:px-0">
-      
-      {/* Connecting Line (Desktop: Horizontal, Mobile: Vertical) */}
-      <div className="absolute inset-0 md:top-1/2 md:-translate-y-1/2 md:h-0.5 md:w-full w-0.5 h-full left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 bg-gray-100 -z-0">
-         {/* Animated Progress Line */}
-         <motion.div 
-            className="absolute top-0 left-0 bg-od-mid-blue"
+    <div className="w-full h-full min-h-[500px] relative overflow-hidden select-none">
+      {/* Background gradients for depth & blending */}
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-white to-white" />
+
+      {/* Vantage Point */}
+      <div 
+        className="absolute inset-0 flex items-center justify-center"
+        style={{ 
+          perspective: "600px",
+          perspectiveOrigin: "50% 50%" 
+        }}
+      >
+        {/* World Container */}
+        <div 
+          className="relative w-full h-full max-w-4xl"
+          style={{ transformStyle: "preserve-3d" }}
+        >
+          
+          {/* FLOOR - Static */}
+          <motion.div 
+            className="absolute top-1/2 left-1/2 w-[1200px] h-[2000px] bg-slate-50/40 origin-center border-x border-slate-200"
             style={{ 
-              width: "100%", 
-              height: "100%", 
-              originX: 0, 
-              originY: 0 
+               // Floor at Y=300 (bottom of 600px racks), Rotated 90deg flat.
+               // We center it first (translate -50%, -50%) then move it down (translateY 300px), then rotate.
+               transform: "translate(-50%, -50%) translateY(300px) rotateX(90deg)",
+               transformStyle: "preserve-3d" 
             }}
-            initial={{ scaleX: 0, scaleY: 0 }}
-            animate={{ 
-               scaleX: typeof window !== 'undefined' && window.innerWidth >= 768 ? (step >= 1 ? 0.33 : step >= 2 ? 0.66 : step >= 3 ? 1 : 0) : 1,
-               scaleY: typeof window !== 'undefined' && window.innerWidth < 768 ? (step >= 1 ? 0.33 : step >= 2 ? 0.66 : step >= 3 ? 1 : 0) : 1
-            }}
-            transition={{ duration: 0.5, ease: "linear" }}
-         />
+          >
+            {/* Grid Floor Texture - Static */}
+            <div 
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `
+                  linear-gradient(to right, rgba(148, 163, 184, 0.1) 1px, transparent 1px),
+                  linear-gradient(to bottom, rgba(148, 163, 184, 0.1) 1px, transparent 1px)
+                `,
+                // Width 120px (across aisle), Height 300px (down aisle - matches rack bays)
+                backgroundSize: "120px 300px",
+                // Shift background to align with rack start if needed.
+                // Rack starts at Z=-500. Floor starts at Z=0? 
+                // We might need to offset background-position to sync lines.
+                // Assuming standard flow, let's try 0 0 first.
+              }}
+            />
+          </motion.div>
+
+          {/* LEFT RACK - Split into 3 Shelves */}
+          <div 
+             className="absolute top-1/2 left-1/2 h-[600px] w-[2000px] origin-center"
+             style={{ 
+                // Moved further left (translateX -380px) to make aisle wider ("less and wider")
+                // Shortened height (h-600)
+               transform: "translate(-50%, -50%) translateX(-380px) translateZ(-500px) rotateY(90deg)",
+               transformStyle: "preserve-3d"
+             }}
+          >
+             {/* Creating 3 Distinct Shelf Levels */}
+             {[0, 1, 2].map((i) => (
+                <div 
+                  key={`left-shelf-${i}`}
+                  className="absolute left-0 w-full h-[140px] bg-gradient-to-b from-slate-50 to-white/0 border-b border-slate-200 flex items-end"
+                  style={{ 
+                    top: `${i * 180}px`, // 140px height + 40px gap
+                  }}
+                >
+                    {/* Shelf Surface (Top face simulation via border/gradient) */}
+                    <div className="w-full h-2 bg-slate-200/50 absolute top-0" />
+                    
+                    {/* Rack Grid Structure - Static */}
+                    <div 
+                      className="absolute inset-0"
+                      style={{
+                        backgroundImage: `
+                            linear-gradient(to right, rgba(30, 58, 138, 0.1) 2px, transparent 2px)
+                        `,
+                        backgroundSize: "300px 100%" // Wider bays (300px)
+                      }}
+                    />
+                    
+                    {/* Static Boxes (using gradients) - Adjusted for wider bays */}
+                    <div 
+                      className="absolute inset-0 opacity-80"
+                      style={{
+                        backgroundImage: `
+                            linear-gradient(90deg, transparent 40px, rgba(56, 189, 248, 0.10) 40px, rgba(56, 189, 248, 0.10) 140px, transparent 140px),
+                            linear-gradient(90deg, transparent 220px, rgba(30, 58, 138, 0.05) 220px, rgba(30, 58, 138, 0.05) 280px, transparent 280px)
+                        `,
+                        backgroundSize: "300px 100%"
+                      }}
+                    />
+                </div>
+             ))}
+          </div>
+
+          {/* RIGHT RACK - Split into 3 Shelves */}
+          <div 
+             className="absolute top-1/2 left-1/2 h-[600px] w-[2000px] origin-center"
+             style={{ 
+               // Moved further right (translateX 380px)
+               transform: "translate(-50%, -50%) translateX(380px) translateZ(-500px) rotateY(-90deg)",
+               transformStyle: "preserve-3d"
+             }}
+          >
+              {[0, 1, 2].map((i) => (
+                <div 
+                  key={`right-shelf-${i}`}
+                  className="absolute left-0 w-full h-[140px] bg-gradient-to-b from-slate-50 to-white/0 border-b border-slate-200 flex items-end"
+                  style={{ 
+                    top: `${i * 180}px`,
+                  }}
+                >
+                    <div className="w-full h-2 bg-slate-200/50 absolute top-0" />
+                    
+                    <div 
+                      className="absolute inset-0"
+                      style={{
+                        backgroundImage: `
+                            linear-gradient(to right, rgba(30, 58, 138, 0.1) 2px, transparent 2px)
+                        `,
+                        backgroundSize: "300px 100%" // Wider bays
+                      }}
+                    />
+
+                     <div 
+                      className="absolute inset-0 opacity-80"
+                      style={{
+                        backgroundImage: `
+                            linear-gradient(90deg, transparent 60px, rgba(30, 58, 138, 0.08) 60px, rgba(30, 58, 138, 0.08) 120px, transparent 120px),
+                            linear-gradient(90deg, transparent 180px, rgba(56, 189, 248, 0.08) 180px, rgba(56, 189, 248, 0.08) 280px, transparent 280px)
+                        `,
+                        backgroundSize: "300px 100%"
+                      }}
+                    />
+                </div>
+             ))}
+          </div>
+
+        </div>
       </div>
-
-      {/** 
-       * NODES 
-       * We map 4 regular nodes. 
-      */}
-      <NodeIcon 
-        icon={Database} 
-        label="Integration" 
-        active={step >= 0} // Always start active or become active first
-      />
-
-      <NodeIcon 
-        icon={ScanBarcode} 
-        label="Inbound" 
-        active={step >= 1} 
-      />
-
-      <NodeIcon 
-        icon={Package} 
-        label="Pick & Pack" 
-        active={step >= 2} 
-      />
-
-      <NodeIcon 
-        icon={Truck} 
-        label="Despatch" 
-        active={step >= 3} 
-      />
-
-      {/* Moving Packet (The "Payload") */}
-      {/* This is complex to make responsive purely with CSS/Motion, so we use a simpler 'highlight' approach above */}
       
+      {/* Atmosphere / Vignette */}
+      <div className="absolute top-0 inset-x-0 h-2/3 bg-gradient-to-b from-white via-white/80 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#F8FAFC] to-transparent pointer-events-none" />
+      <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#F8FAFC] to-transparent pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#F8FAFC] to-transparent pointer-events-none" />
+
     </div>
   );
 }

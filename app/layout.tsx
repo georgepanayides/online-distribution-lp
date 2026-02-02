@@ -30,7 +30,7 @@ export default function RootLayout({
         className={`${outfitSans.variable} ${lato.variable} antialiased`}
       >
         <Header />
-        <div className="pt-20"> {/* Offset for fixed header */}
+        <div className="pt-19"> {/* Offset for fixed header */}
           {children}
         </div>
       </body>
