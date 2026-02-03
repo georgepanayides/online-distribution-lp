@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lato, Outfit } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 
 const outfitSans = Outfit({
   variable: "--font-outfit-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
         <div className="pt-19"> {/* Offset for fixed header */}
           {children}
         </div>
+        <Footer />
       </body>
     </html>
   );

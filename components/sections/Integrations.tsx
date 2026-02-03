@@ -1,5 +1,5 @@
 import { GridLines } from "@/components/ui/grid-lines"
-import { IntegrationGrid } from "@/components/ui/integration-grid"
+import { IntegrationCircuit } from "@/components/ui/integration-circuit"
 
 const integrationData = {
   "inventory_erps": [
@@ -86,8 +86,8 @@ export function Integrations() {
                 </div>
             </div>
 
-            {/* Grid */}
-            <IntegrationGrid data={integrationData} />
+            {/* Circuit Visualization */}
+            <IntegrationCircuit data={integrationData} />
 
         </div>
     </section>

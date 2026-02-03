@@ -111,7 +111,7 @@ export function BentoGridOverlay({ containerId }: { containerId: string }) {
   }, [containerId]);
 
   return (
-    <div className="absolute inset-0 pointer-events-none z-50">
+    <div className="absolute inset-0 pointer-events-none z-20">
       {dots.map((dot, i) => (
         <motion.div
           key={`${dot.x}-${dot.y}`}
