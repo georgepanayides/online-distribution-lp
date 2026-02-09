@@ -8,6 +8,7 @@ import { ScalingPeak } from "@/components/sections/ScalingPeak";
 import { Integrations } from "@/components/sections/Integrations";
 import { ComplianceGrid } from "@/components/sections/ComplianceGrid";
 import { Locations } from "@/components/sections/Locations";
+import { FAQs } from "@/components/sections/FAQs";
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
         <Integrations />
         <ComplianceGrid />
         <Locations />
+        <FAQs />
     </main>
   );
 }

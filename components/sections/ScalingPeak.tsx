@@ -20,7 +20,7 @@ export function ScalingPeak() {
           <div className="lg:col-start-1 lg:row-start-1 max-w-2xl">
             <RevealPanel>
               <SectionKicker label="Peak & Scaling" />
-              <h2 className="mt-6 text-4xl md:text-5xl font-sans font-medium text-[color:var(--od-dark-blue)] tracking-tight leading-[1.1]">
+              <h2 className="mt-6 text-4xl md:text-5xl font-sans font-bold text-[color:var(--od-dark-blue)] tracking-tight leading-[1.1]">
                 Kill the growth handbrake.
               </h2>
             </RevealPanel>

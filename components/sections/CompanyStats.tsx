@@ -102,7 +102,7 @@ export function CompanyStats() {
         <div className="mb-10 md:mb-14">
           <SectionKicker label="Scale Proof" />
 
-          <h2 className="mt-5 font-sans text-4xl md:text-5xl font-medium tracking-tight text-[color:var(--od-dark-blue)]">
+          <h2 className="mt-5 font-sans text-4xl md:text-5xl font-bold tracking-tight text-[color:var(--od-dark-blue)]">
             Enterprise-grade fulfilment, built for control.
           </h2>
           <p className="mt-4 font-lato text-base md:text-lg text-gray-600 max-w-3xl">

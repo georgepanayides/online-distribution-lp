@@ -8,6 +8,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { CATEGORY_CONFIG } from "./config";
 import { CoreNode } from "./nodes/core-node";
 import { CategoryNode } from "./nodes/category-node";
@@ -23,6 +24,8 @@ export function IntegrationCircuit({ data }: IntegrationCircuitProps) {
     useState<string | null>(null);
   const [activeIntegrationSolidPath, setActiveIntegrationSolidPath] =
     useState<string | null>(null);
+
+  const reduceMotion = useReducedMotion();
 
   const rawPulseId = useId();
   const pulseIdSafe = useMemo(
@@ -304,6 +307,11 @@ export function IntegrationCircuit({ data }: IntegrationCircuitProps) {
     return `M ${activeCategoryLine.x1} ${activeCategoryLine.y1} L ${activeCategoryLine.x2} ${activeCategoryLine.y2}`;
   }, [activeCategoryLine, activeIntegrationSolidPath]);
 
+  const activeCategoryHighlightPathD = useMemo(() => {
+    if (!activeCategoryLine) return null;
+    return `M ${activeCategoryLine.x1} ${activeCategoryLine.y1} L ${activeCategoryLine.x2} ${activeCategoryLine.y2}`;
+  }, [activeCategoryLine]);
+
   return (
     <div className="w-full relative overflow-hidden" style={vars}>
       <div className="relative z-10 w-full">
@@ -319,10 +327,10 @@ export function IntegrationCircuit({ data }: IntegrationCircuitProps) {
 
               {/* Grid lines (single-stroke; avoids double borders) */}
               <div
-                className="absolute inset-0 pointer-events-none z-[1] border border-gray-200"
+                className="absolute inset-0 pointer-events-none z-[1] border border-gray-200/65"
                 style={{
                   // Internal gridlines only (no top/left edge), plus a single outer outline.
-                  backgroundImage: `repeating-linear-gradient(to right, transparent 0, transparent calc(var(--cell) - 1px), rgba(0,59,92,0.10) calc(var(--cell) - 1px), rgba(0,59,92,0.10) var(--cell)), repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--cell) - 1px), rgba(0,59,92,0.10) calc(var(--cell) - 1px), rgba(0,59,92,0.10) var(--cell))`,                }}
+                  backgroundImage: `repeating-linear-gradient(to right, transparent 0, transparent calc(var(--cell) - 1px), rgba(0,59,92,0.06) calc(var(--cell) - 1px), rgba(0,59,92,0.06) var(--cell)), repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--cell) - 1px), rgba(0,59,92,0.06) calc(var(--cell) - 1px), rgba(0,59,92,0.06) var(--cell))`,                }}
               />
 
               {/* Connector lines */}
@@ -374,7 +382,7 @@ export function IntegrationCircuit({ data }: IntegrationCircuitProps) {
                     y2={l.y2}
                     className="od-dash-flow"
                     stroke="#003B5C"
-                    strokeOpacity={activeCategory && l.key === activeCategory ? 0 : 0.35}
+                    strokeOpacity={0.35}
                     strokeWidth={1.5}
                     strokeDasharray="6 8"
                     strokeDashoffset={0}
@@ -383,53 +391,77 @@ export function IntegrationCircuit({ data }: IntegrationCircuitProps) {
                 ))}
 
                 {/* Solid hover highlight (covers dashed completely) */}
-                {activeIntegrationSolidPath ? (
-                  <>
-                    <path
-                      d={activeIntegrationSolidPath}
-                      fill="none"
-                      stroke="white"
-                      strokeOpacity={1}
-                      strokeWidth={5}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d={activeIntegrationSolidPath}
-                      fill="none"
-                      stroke="var(--od-mid-blue)"
-                      strokeOpacity={1}
-                      strokeWidth={2.5}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </>
-                ) : null}
+                <AnimatePresence>
+                  {activeIntegrationSolidPath ? (
+                    <motion.g
+                      key={`int:${activeIntegrationKey ?? activeIntegrationSolidPath}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.16, ease: "easeOut" }}
+                    >
+                      <motion.path
+                        d={activeIntegrationSolidPath}
+                        fill="none"
+                        stroke="white"
+                        strokeOpacity={1}
+                        strokeWidth={5}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        initial={{ pathLength: reduceMotion ? 1 : 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: reduceMotion ? 0 : 0.22, ease: "easeOut" }}
+                      />
+                      <motion.path
+                        d={activeIntegrationSolidPath}
+                        fill="none"
+                        stroke="var(--od-mid-blue)"
+                        strokeOpacity={1}
+                        strokeWidth={2.5}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        initial={{ pathLength: reduceMotion ? 1 : 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: reduceMotion ? 0 : 0.22, ease: "easeOut" }}
+                      />
+                    </motion.g>
+                  ) : null}
+                </AnimatePresence>
 
-                {activeCategoryLine ? (
-                  <>
-                    <line
-                      x1={activeCategoryLine.x1}
-                      y1={activeCategoryLine.y1}
-                      x2={activeCategoryLine.x2}
-                      y2={activeCategoryLine.y2}
-                      stroke="white"
-                      strokeOpacity={1}
-                      strokeWidth={5}
-                      strokeLinecap="round"
-                    />
-                    <line
-                      x1={activeCategoryLine.x1}
-                      y1={activeCategoryLine.y1}
-                      x2={activeCategoryLine.x2}
-                      y2={activeCategoryLine.y2}
-                      stroke="var(--od-mid-blue)"
-                      strokeOpacity={1}
-                      strokeWidth={2.5}
-                      strokeLinecap="round"
-                    />
-                  </>
-                ) : null}
+                <AnimatePresence>
+                  {activeCategoryHighlightPathD ? (
+                    <motion.g
+                      key={`cat:${activeCategory ?? ""}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.16, ease: "easeOut" }}
+                    >
+                      <motion.path
+                        d={activeCategoryHighlightPathD}
+                        fill="none"
+                        stroke="white"
+                        strokeOpacity={1}
+                        strokeWidth={5}
+                        strokeLinecap="round"
+                        initial={{ pathLength: reduceMotion ? 1 : 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: reduceMotion ? 0 : 0.22, ease: "easeOut" }}
+                      />
+                      <motion.path
+                        d={activeCategoryHighlightPathD}
+                        fill="none"
+                        stroke="var(--od-mid-blue)"
+                        strokeOpacity={1}
+                        strokeWidth={2.5}
+                        strokeLinecap="round"
+                        initial={{ pathLength: reduceMotion ? 1 : 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: reduceMotion ? 0 : 0.22, ease: "easeOut" }}
+                      />
+                    </motion.g>
+                  ) : null}
+                </AnimatePresence>
 
                 {/* Pulse signal flowing along the active route */}
                 {activePulsePathD ? (

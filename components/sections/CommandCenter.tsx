@@ -33,7 +33,7 @@ export function CommandCenter() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-2xl">
             <SectionKicker label="Client Portal" className="mb-4" />
-            <h2 className="font-sans text-4xl md:text-5xl font-medium text-od-dark-blue leading-tight">
+            <h2 className="font-sans text-4xl md:text-5xl font-bold text-od-dark-blue leading-tight">
               The Command Center. <br />
               <span className="text-od-mid-blue">Your Logistics OS.</span>
             </h2>

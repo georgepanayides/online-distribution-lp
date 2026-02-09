@@ -24,7 +24,7 @@ export function BrandScroller({ brands, className = "", speed = 30 }: BrandScrol
       <motion.div
         className="flex w-max items-center gap-16"
         animate={{
-          x: ["0%", "-51%"],
+          x: ["0%", "-50.5%"],
         }}
         transition={{
           duration: speed,

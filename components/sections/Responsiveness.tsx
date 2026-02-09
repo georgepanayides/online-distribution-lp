@@ -17,7 +17,7 @@ export function Responsiveness() {
           <div className="max-w-2xl">
             <SectionKicker label="Responsiveness" />
 
-            <h2 className="mt-6 font-sans text-4xl sm:text-5xl font-medium text-[color:var(--od-dark-blue)] tracking-tight leading-[1.06]">
+            <h2 className="mt-6 font-sans text-4xl sm:text-5xl font-bold text-[color:var(--od-dark-blue)] tracking-tight leading-[1.06]">
               Same-day response.
               <br />
               <span className="text-od-mid-blue">Two-hour order intervention.</span>

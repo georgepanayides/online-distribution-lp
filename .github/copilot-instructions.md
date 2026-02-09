@@ -39,7 +39,7 @@ Always check `public/` directories before generating placeholders. Use these spe
 
 ## 3.2 Typography Weights (MANDATORY)
 - **Hero H1:** May use `font-bold`.
-- **Section H2:** Must use `font-sans font-medium` (avoid mixing `font-bold`/`font-semibold` between sections).
+- **Section H2:** Must use `font-sans font-bold` (avoid mixing `font-medium`/`font-semibold` between sections).
 - **Section H3 / Card titles:** Prefer `font-sans font-semibold` for hierarchy, but keep consistent within a section.
 
 ## 4. Coding Standards

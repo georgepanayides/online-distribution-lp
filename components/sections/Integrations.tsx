@@ -58,7 +58,7 @@ export function Integrations() {
                 <div className="max-w-2xl">
                   <SectionKicker label="Ecosystem" className="mb-6" />
                     
-                    <h2 className="text-4xl sm:text-5xl font-sans font-medium text-[var(--od-dark-blue)] mb-6 leading-[1.1]">
+                    <h2 className="text-4xl sm:text-5xl font-sans font-bold text-[var(--od-dark-blue)] mb-6 leading-[1.1]">
                         Seamlessly Integrated. <br />
                         <span className="text-[var(--od-mid-blue)] opacity-80">Totally Connected.</span>
                     </h2>

@@ -45,7 +45,7 @@ export function ComplianceGrid() {
         <div className="mb-16 md:mb-20">
           <SectionKicker label="Governance & Safety" className="mb-6" />
 
-          <h2 className="text-4xl sm:text-5xl font-sans font-medium text-[var(--od-dark-blue)] mb-6 max-w-3xl">
+          <h2 className="text-4xl sm:text-5xl font-sans font-bold text-[var(--od-dark-blue)] mb-6 max-w-3xl">
             Uncompromising Standards. <br />
             <span className="text-[var(--od-mid-blue)] opacity-80">Certified Security.</span>
           </h2>

@@ -29,7 +29,7 @@ export function WarehouseBlueprint() {
           <div className="lg:col-span-5">
             <SectionKicker label="Operational Blueprint" />
 
-            <h2 className="mt-5 font-sans text-4xl md:text-5xl font-medium tracking-tight text-[color:var(--od-dark-blue)]">
+            <h2 className="mt-5 font-sans text-4xl md:text-5xl font-bold tracking-tight text-[color:var(--od-dark-blue)]">
               A fulfilment workflow designed for total control.
             </h2>
             <p className="mt-4 font-lato text-base md:text-lg text-gray-600 max-w-xl">
