@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface Brand {
   id: string;
   name: string;
+  logoSrc?: string;
 }
 
 interface BrandScrollerProps {
@@ -35,14 +37,19 @@ export function BrandScroller({ brands, className = "", speed = 30 }: BrandScrol
             key={`${brand.id}-${index}`}
             className="flex items-center justify-center min-w-[150px]"
           >
-            {/* 
-              Placeholder for Brand Logo. 
-              In production, replace text with <Image src={brand.logo} ... /> 
-              Style: Grayscale, hover to color? Or just simple opacity
-            */}
-            <span className="font-sans text-2xl font-bold text-gray-400 uppercase tracking-widest hover:text-od-mid-blue transition-colors duration-300 cursor-default">
-              {brand.name}
-            </span>
+            {brand.logoSrc ? (
+              <Image
+                src={brand.logoSrc}
+                alt={brand.name}
+                width={180}
+                height={56}
+                className="h-20 w-auto object-contain opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+              />
+            ) : (
+              <span className="font-sans text-2xl font-bold text-gray-400 uppercase tracking-widest hover:text-od-mid-blue transition-colors duration-300 cursor-default">
+                {brand.name}
+              </span>
+            )}
           </div>
         ))}
       </motion.div>

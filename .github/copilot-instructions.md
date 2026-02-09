@@ -32,6 +32,16 @@ Always check `public/` directories before generating placeholders. Use these spe
 - **The "Bento" Style:** Use Bento Grid layouts for feature sections. For complex dashboards, use the "Clipped Peek" effect where the dashboard overflows its container to imply depth and scale.
 - **Forward Motion:** Use "slashes" (`/`) as background decorative elements or CSS clip-paths to symbolize "moving forward" and momentum.
 
+## 3.1 Section Kicker (MANDATORY)
+- **Consistency:** All section “kicker/eyebrow” labels must use the shared `SectionKicker` component (`components/ui/section-kicker.tsx`).
+- **No custom pills:** Do not invent new kicker pill styles (no rounded badges, dots, or icon chips) unless explicitly requested.
+- **Canonical reference:** Match the look used for “Operational Blueprint” and “Scale Proof”.
+
+## 3.2 Typography Weights (MANDATORY)
+- **Hero H1:** May use `font-bold`.
+- **Section H2:** Must use `font-sans font-medium` (avoid mixing `font-bold`/`font-semibold` between sections).
+- **Section H3 / Card titles:** Prefer `font-sans font-semibold` for hierarchy, but keep consistent within a section.
+
 ## 4. Coding Standards
 - Use **Tailwind CSS classes** as defined in the `@theme inline` block.
 - Favor **Lucide React** for utility icons only if a branded icon from `public/icons/` doesn't fit the specific functional need.

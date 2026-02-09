@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { GridLines } from "@/components/ui/grid-lines"
+import { SectionKicker } from "@/components/ui/section-kicker"
 import { NetworkMap } from "@/components/graphics/NetworkMap"
 import { MapPin, Phone, Mail, Building2, ArrowRight } from "lucide-react"
 
@@ -39,12 +40,7 @@ export function Locations() {
             {/* Left Column: Map & Intro */}
             <div className="flex flex-col">
                 <div className="mb-10">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--od-light-blue)]/30 border border-[var(--od-dark-blue)]/10 mb-6">
-                        <MapPin className="w-4 h-4 text-[var(--od-dark-blue)]" />
-                        <span className="text-xs font-mono text-[var(--od-dark-blue)] uppercase tracking-wider">
-                            National Network
-                        </span>
-                    </div>
+                    <SectionKicker label="National Network" className="mb-6" />
                     
                     <h2 className="text-4xl sm:text-5xl font-sans font-medium text-[var(--od-dark-blue)] mb-6">
                         Strategic Coverage. <br />

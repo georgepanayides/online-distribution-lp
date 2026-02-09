@@ -2,6 +2,7 @@
 
 import React from "react";
 import { GridLines } from "@/components/ui/grid-lines";
+import { SectionKicker } from "@/components/ui/section-kicker";
 import { ClientPortalDashboard } from "@/components/graphics/ClientPortalDashboard";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Link from 'next/link';
@@ -31,11 +32,8 @@ export function CommandCenter() {
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-od-mid-blue/10 border border-od-mid-blue/20 rounded-full">
-               <span className="w-1.5 h-1.5 rounded-full bg-od-mid-blue animate-pulse" />
-               <span className="text-xs font-bold text-od-mid-blue uppercase tracking-widest">Client Portal</span>
-            </div>
-            <h2 className="font-sans text-4xl md:text-5xl font-bold text-od-dark-blue leading-tight">
+            <SectionKicker label="Client Portal" className="mb-4" />
+            <h2 className="font-sans text-4xl md:text-5xl font-medium text-od-dark-blue leading-tight">
               The Command Center. <br />
               <span className="text-od-mid-blue">Your Logistics OS.</span>
             </h2>

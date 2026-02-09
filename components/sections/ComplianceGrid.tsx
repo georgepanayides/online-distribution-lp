@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { GridLines } from "@/components/ui/grid-lines"
+import { SectionKicker } from "@/components/ui/section-kicker"
 import { 
   ShieldCheck, 
   Container, 
@@ -42,12 +43,7 @@ export function ComplianceGrid() {
         
         {/* Header */}
         <div className="mb-16 md:mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--od-light-blue)]/30 border border-[var(--od-dark-blue)]/10 mb-6">
-            <ShieldCheck className="w-4 h-4 text-[var(--od-dark-blue)]" />
-            <span className="text-xs font-mono text-[var(--od-dark-blue)] uppercase tracking-wider">
-              Governance & Safety
-            </span>
-          </div>
+          <SectionKicker label="Governance & Safety" className="mb-6" />
 
           <h2 className="text-4xl sm:text-5xl font-sans font-medium text-[var(--od-dark-blue)] mb-6 max-w-3xl">
             Uncompromising Standards. <br />

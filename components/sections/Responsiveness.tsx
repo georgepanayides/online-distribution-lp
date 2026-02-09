@@ -1,7 +1,6 @@
-import Image from "next/image";
-
 import { GridLines } from "@/components/ui/grid-lines";
 import { ResponsivenessSLA } from "../ui/responsiveness-sla";
+import { SectionKicker } from "@/components/ui/section-kicker";
 
 export function Responsiveness() {
   return (
@@ -16,20 +15,9 @@ export function Responsiveness() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-0">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-14">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 border border-od-dark-blue/10">
-              <Image
-                src="/icons/Target - Gradient.svg"
-                alt="Responsiveness"
-                width={16}
-                height={16}
-                className="shrink-0"
-              />
-              <span className="text-xs font-bold text-od-dark-blue uppercase tracking-widest">
-                Responsiveness
-              </span>
-            </div>
+            <SectionKicker label="Responsiveness" />
 
-            <h2 className="mt-6 font-sans text-4xl sm:text-5xl font-bold text-[color:var(--od-dark-blue)] tracking-tight leading-[1.06]">
+            <h2 className="mt-6 font-sans text-4xl sm:text-5xl font-medium text-[color:var(--od-dark-blue)] tracking-tight leading-[1.06]">
               Same-day response.
               <br />
               <span className="text-od-mid-blue">Two-hour order intervention.</span>

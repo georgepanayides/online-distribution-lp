@@ -3,14 +3,71 @@ import { BrandScroller } from "@/components/ui/brand-scroller";
 import { GridLines } from "@/components/ui/grid-lines";
 
 const TRUSTED_BRANDS = [
-  { id: "1", name: "Samsung" },
-  { id: "2", name: "LG" },
-  { id: "3", name: "Sony" },
-  { id: "4", name: "Philips" },
-  { id: "5", name: "Panasonic" },
-  { id: "6", name: "Hisense" },
-  { id: "7", name: "TCL" },
-  { id: "8", name: "Haier" },
+  {
+    id: "mons-royale",
+    name: "Mons Royale",
+    logoSrc: "/images/brands-work-with/OD-Logos_0000_Mons-Royale.png",
+  },
+  {
+    id: "allbirds",
+    name: "Allbirds",
+    logoSrc: "/images/brands-work-with/OD-Logos_0001_Allbirds.png",
+  },
+  {
+    id: "aimn",
+    name: "Aim'n",
+    logoSrc: "/images/brands-work-with/OD-Logos_0002_Aimn.png",
+  },
+  {
+    id: "wine-friend",
+    name: "Wine Friend",
+    logoSrc: "/images/brands-work-with/OD-Logos_0003_Wine-Friend.png",
+  },
+  {
+    id: "huski",
+    name: "Huski",
+    logoSrc: "/images/brands-work-with/OD-Logos_0004_Huski.png",
+  },
+  {
+    id: "mountain-warehouse",
+    name: "Mountain Warehouse",
+    logoSrc: "/images/brands-work-with/OD-Logos_0005_Mountain-Warehouse.png",
+  },
+  {
+    id: "ethique",
+    name: "Ethique",
+    logoSrc: "/images/brands-work-with/OD-Logos_0006_Ethique.png",
+  },
+  {
+    id: "ecosa",
+    name: "Ecosa",
+    logoSrc: "/images/brands-work-with/OD-Logos_0007_Ecosa.png",
+  },
+  {
+    id: "chanui",
+    name: "Chanui",
+    logoSrc: "/images/brands-work-with/OD-Logos_0008_Chanui.png",
+  },
+  {
+    id: "bushbuck",
+    name: "Bushbuck",
+    logoSrc: "/images/brands-work-with/OD-Logos_0009_Bushbuck.png",
+  },
+  {
+    id: "boody",
+    name: "Boody",
+    logoSrc: "/images/brands-work-with/OD-Logos_0010_Boody.png",
+  },
+  {
+    id: "almighty",
+    name: "Almighty",
+    logoSrc: "/images/brands-work-with/OD-Logos_0011_Almighty.png",
+  },
+  {
+    id: "clean-collective",
+    name: "Clean Collective",
+    logoSrc: "/images/brands-work-with/OD-Logos_0012_Clean-Collective.png",
+  },
 ];
 
 export function BrandsTicker() {

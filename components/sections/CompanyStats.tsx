@@ -1,6 +1,7 @@
 import React from "react";
 import { GridLines } from "@/components/ui/grid-lines";
 import { BentoGridOverlay } from "@/components/ui/bento-grid-overlay";
+import { SectionKicker } from "@/components/ui/section-kicker";
 
 const companyData = {
   net_promoter_score: {
@@ -99,13 +100,9 @@ export function CompanyStats() {
       <GridLines opacity={0.08} lineColor="border-od-dark-blue" />
       <div className="relative max-w-6xl mx-auto px-4 sm:px-0">
         <div className="mb-10 md:mb-14">
-          <div className="inline-flex items-center border border-gray-200/80 bg-transparent px-3 py-1.5">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-od-mid-blue">
-              Scale Proof
-            </span>
-          </div>
+          <SectionKicker label="Scale Proof" />
 
-          <h2 className="mt-5 font-sans text-4xl md:text-5xl font-bold tracking-tight text-[color:var(--od-dark-blue)]">
+          <h2 className="mt-5 font-sans text-4xl md:text-5xl font-medium tracking-tight text-[color:var(--od-dark-blue)]">
             Enterprise-grade fulfilment, built for control.
           </h2>
           <p className="mt-4 font-lato text-base md:text-lg text-gray-600 max-w-3xl">

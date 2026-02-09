@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Zap } from "lucide-react";
 import { GridLines } from "@/components/ui/grid-lines";
 import { ProcessSchematic } from "@/components/graphics/ProcessSchematic";
 import { RevealPanel } from "@/components/ui/animations/RevealPanel";
+import { SectionKicker } from "@/components/ui/section-kicker";
 
 export function WarehouseBlueprint() {
   return (
@@ -26,13 +27,9 @@ export function WarehouseBlueprint() {
         <div className="grid grid-cols-1 lg:grid-cols-10 gap-10 lg:gap-12 items-start">
           {/* Left: Copy (no boxes) */}
           <div className="lg:col-span-5">
-            <div className="inline-flex items-center border border-gray-200/80 bg-transparent px-3 py-1.5">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-od-mid-blue">
-                Operational Blueprint
-              </span>
-            </div>
+            <SectionKicker label="Operational Blueprint" />
 
-            <h2 className="mt-5 font-sans text-4xl md:text-5xl font-bold tracking-tight text-[color:var(--od-dark-blue)]">
+            <h2 className="mt-5 font-sans text-4xl md:text-5xl font-medium tracking-tight text-[color:var(--od-dark-blue)]">
               A fulfilment workflow designed for total control.
             </h2>
             <p className="mt-4 font-lato text-base md:text-lg text-gray-600 max-w-xl">
