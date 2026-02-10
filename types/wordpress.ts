@@ -55,7 +55,18 @@ export interface HeroSection extends BaseSection {
   cta_text?: string;
   cta_link?: string;
   background_image?: ACFImage | string; // Handle both object (ACF default) or URL string
-  hero_graphic?: 'none' | '3pl-animation';
+  /** Optional: MP4 used as the large first "slash" (Shape A) in the hero. */
+  shape_a_video_url?: string;
+  /** Optional: show a small always-counting throughput kicker above the headline. */
+  live_counter?: {
+    label?: string;
+    metric?: string;
+    start?: number;
+    intervalMs?: number;
+    stepMin?: number;
+    stepMax?: number;
+  };
+  hero_graphic?: 'none' | '3pl-animation' | 'automation-film';
   theme?: 'light' | 'dark';
 }
 

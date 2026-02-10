@@ -32,6 +32,10 @@ Always check `public/` directories before generating placeholders. Use these spe
 - **The "Bento" Style:** Use Bento Grid layouts for feature sections. For complex dashboards, use the "Clipped Peek" effect where the dashboard overflows its container to imply depth and scale.
 - **Forward Motion:** Use "slashes" (`/`) as background decorative elements or CSS clip-paths to symbolize "moving forward" and momentum.
 
+## 3.4 Borders & Corners (MANDATORY)
+- If the user requests **sharp borders** (especially “sharp dotted borders”), use square corners (`rounded-none`) on the outer container and any decorative border layers (pseudo-elements, inner frames). Do not default to rounded corners.
+- If a section requests a **slash/stripe background**, it must be visually present at normal viewing distance (don’t set opacity/blur so low it disappears).
+
 ## 3.1 Section Kicker (MANDATORY)
 - **Consistency:** All section “kicker/eyebrow” labels must use the shared `SectionKicker` component (`components/ui/section-kicker.tsx`).
 - **No custom pills:** Do not invent new kicker pill styles (no rounded badges, dots, or icon chips) unless explicitly requested.
@@ -41,6 +45,11 @@ Always check `public/` directories before generating placeholders. Use these spe
 - **Hero H1:** May use `font-bold`.
 - **Section H2:** Must use `font-sans font-bold` (avoid mixing `font-medium`/`font-semibold` between sections).
 - **Section H3 / Card titles:** Prefer `font-sans font-semibold` for hierarchy, but keep consistent within a section.
+
+## 3.3 Two-Line Headings (MANDATORY)
+- When a heading is intentionally split across two lines, the **second line** must be styled in a softer blue for hierarchy.
+- Canonical style: wrap the second line in `span` with `text-[var(--od-mid-blue)] opacity-80`.
+- Keep the first line in `text-[color:var(--od-dark-blue)]`.
 
 ## 4. Coding Standards
 - Use **Tailwind CSS classes** as defined in the `@theme inline` block.
@@ -88,4 +97,5 @@ Always check `public/` directories before generating placeholders. Use these spe
 - **Data Flow:** Always pass data from the Server Section into the Client UI component via **Props**. 
 - **Strict Separation:** - Never put `'use client'` at the Section level if it can be avoided. 
     - Keep Client Components "leaf-level" or "wrapper-level" to minimize the client-side JS sent to the browser.
+- **Do Not Client-Extract Static Copy:** If a block is simple, static copy/layout (e.g., 1–3 hard-coded “articles” with title + body), keep it in the **Section** as server-rendered markup. Only create a UI component when the block needs genuine re-use across sections or needs client-only interactivity/animation hooks.
 - **Optimization:** Prioritize Next.js caching and SSR for high SEO value on core business content.

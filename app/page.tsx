@@ -9,18 +9,29 @@ import { Integrations } from "@/components/sections/Integrations";
 import { ComplianceGrid } from "@/components/sections/ComplianceGrid";
 import { Locations } from "@/components/sections/Locations";
 import { FAQs } from "@/components/sections/FAQs";
+import { Security } from "@/components/sections/Security";
+
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <PageHero 
         acf_fc_layout="hero_section"
-        heading="Modern Distribution for the Digital Age"
-        subheading="Seamlessly connect your CMS to your frontend with our headless architecture solutions."
-        cta_text="Get Started"
+        heading="3PL Fulfilment Built for Total Control"
+        subheading="Close efficiency gaps across receiving, storage, pick & pack, and despatch — with high‑throughput operations and end‑to‑end visibility."
+        cta_text="Explore Services"
         cta_link="/services"
         background_image="/images/PH1-Aisle-No-People-.jpg"
-        hero_graphic="3pl-animation"
+          live_counter={{
+            label: "Live Ops",
+            metric: "Orders processed",
+            start: 12873491,
+            intervalMs: 900,
+            stepMin: 8,
+            stepMax: 38,
+          }}
+        shape_a_video_url="https://www.onlinedistribution.co.nz/wp-content/uploads/2024/06/Web-Welcome-Video-41-Seconds.mp4"
+        hero_graphic="automation-film"
         />
         <BrandsTicker />
         <CompanyStats />
@@ -30,6 +41,7 @@ export default function Home() {
         <Integrations />
         <ComplianceGrid />
         <Locations />
+        <Security />
         <FAQs />
     </main>
   );

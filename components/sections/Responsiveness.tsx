@@ -20,7 +20,7 @@ export function Responsiveness() {
             <h2 className="mt-6 font-sans text-4xl sm:text-5xl font-bold text-[color:var(--od-dark-blue)] tracking-tight leading-[1.06]">
               Same-day response.
               <br />
-              <span className="text-od-mid-blue">Two-hour order intervention.</span>
+              <span className="text-[var(--od-mid-blue)] opacity-80">Two-hour order intervention.</span>
             </h2>
             <p className="mt-5 font-lato text-lg text-slate-600 leading-relaxed max-w-xl">
               When something breaks, you don’t need a ticket number — you need a clear owner,

@@ -62,7 +62,7 @@ export function FAQs() {
           <h2 className="mt-6 font-sans text-4xl md:text-5xl font-bold tracking-tight text-[color:var(--od-dark-blue)]">
             Clear answers.
             <br />
-            <span className="text-od-mid-blue">Zero hand-waving.</span>
+            <span className="text-[var(--od-mid-blue)] opacity-80">Zero hand-waving.</span>
           </h2>
           <p className="mt-5 font-lato text-base md:text-lg text-slate-600 leading-relaxed">
             The fastest way to trust an operation is to understand how it behaves under pressure—

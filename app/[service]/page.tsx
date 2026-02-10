@@ -5,6 +5,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import { BrandsTicker } from "@/components/sections/BrandsTicker";
 import { Integrations } from "@/components/sections/Integrations";
 import { Locations } from "@/components/sections/Locations";
+import { Security } from "@/components/sections/Security";
 
 const SERVICE_PAGES: Record<
 	string,
@@ -32,6 +33,14 @@ const SERVICE_PAGES: Record<
 		ctaLink: "/contact",
 		backgroundImage: "/images/PH1-Aisle-No-People-.jpg",
 	},
+	security: {
+		heading: "Uncompromising Security",
+		subheading:
+			"Layered controls across perimeter, people, and systems — designed to protect stock without slowing warehouse flow.",
+		ctaText: "Talk to an Expert",
+		ctaLink: "/contact",
+		backgroundImage: "/images/PH1-Aisle-No-People-.jpg",
+	},
 };
 
 export default async function ServicePage({
@@ -56,9 +65,15 @@ export default async function ServicePage({
 				background_image={page.backgroundImage}
 				hero_graphic="3pl-animation"
 			/>
-			<BrandsTicker />
-			<Integrations />
-			<Locations />
+			{service === "security" ? (
+				<Security />
+			) : (
+				<>
+					<BrandsTicker />
+					<Integrations />
+					<Locations />
+				</>
+			)}
 		</main>
 	);
 }

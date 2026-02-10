@@ -1,6 +1,6 @@
 import { GridLines } from "@/components/ui/grid-lines"
 import { SectionKicker } from "@/components/ui/section-kicker"
-import { LocationMapPack } from "../ui/locations/LocationMapPack"
+import { NzMapInteractive } from "@/components/ui/locations/NzMapInteractive"
 
 const LOCATIONS = {
   office: {
@@ -56,8 +56,12 @@ export function Locations() {
     <section className="relative w-full py-24 sm:py-32 bg-[#F7FAFF] overflow-hidden">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/60" />
       <GridLines lineColor="border-od-dark-blue" opacity={0.08} />
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-0 grid grid-cols-12">
-        <div className="mb-12 md:mb-16 max-w-3xl col-span-5">
+        <div className="absolute -right-0 -top-25 w-310 h-400 scale-110 origin-top-right transform">
+          <NzMapInteractive locations={locations} className="h-full w-full" />
+        </div>
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-0">
+        <div className="relative grid grid-cols-12 min-h-[520px]">
+        <div className="mb-12 md:mb-16 max-w-3xl col-span-12 lg:col-span-5">
           <SectionKicker label="National Network" className="mb-6" />
           <h2 className="text-4xl sm:text-5xl font-sans font-bold text-[var(--od-dark-blue)] mb-6">
             Strategic Coverage. <br />
@@ -67,10 +71,8 @@ export function Locations() {
             With strategically located fulfilment centres across Auckland and Christchurch, we run a national 3PL network that puts inventory closer to customers — and keeps service levels predictable.
           </p>
         </div>
-        <div className="col-span-7">
-        <LocationMapPack locations={locations} />
         </div>
-        </div>
+      </div>
     </section>
   )
 }

@@ -1,11 +1,23 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { GridLines } from "@/components/ui/grid-lines";
 import { RevealPanel } from "@/components/ui/animations/RevealPanel";
-import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { SectionKicker } from "@/components/ui/section-kicker";
-import { TrendingUp } from "lucide-react";
+import { ScalingPeakCapacityCard } from "@/components/graphics/ScalingPeakCapacityCard";
+import Image from "next/image";
+
+const ARTICLES = [
+  {
+    title: "Elastic Infrastructure",
+    body: "Scaling destroys rigid systems. We provide a 'liquid' fulfillment layer that expands instantly. Black Friday surges, influencer drops, or sudden viral hits are no longer logistical threats—they are just revenue to be captured.",
+    iconSrc: "/icons/Blue Cube - Colour.svg",
+    iconAlt: "Infrastructure",
+  },
+  {
+    title: "Founder Freedom",
+    body: "The ultimate benchmark of scale isn't volume—it's silence. Stop managing warehouse shifts. Stop packing boxes at 10 PM. Take a holiday. We professionalize the physical reality of your business so you can reclaim your role as CEO.",
+    iconSrc: "/icons/Target - Gradient.svg",
+    iconAlt: "Focus",
+  },
+] as const;
 
 export function ScalingPeak() {
   return (
@@ -34,103 +46,94 @@ export function ScalingPeak() {
           {/* Top-right: Illustration */}
           <div className="lg:col-start-2 lg:row-start-1 relative">
             <div className="absolute -top-12 -right-12 h-56 w-56 rounded-full bg-[var(--od-light-blue)]/35 blur-3xl" />
-            <div className="relative overflow-hidden rounded-2xl bg-white/70 border border-[var(--od-dark-blue)]/10 shadow-[0_18px_55px_rgba(0,59,92,0.10)]">
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-[var(--od-light-blue)]/25" />
-              <div className="absolute top-0 right-0 p-8 opacity-[0.05] text-[var(--od-dark-blue)]">
-                <TrendingUp size={180} strokeWidth={1} />
-              </div>
-
-              <div className="relative z-10 p-8 md:p-12">
-                <p className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">
-                  Daily Volume Capacity
-                </p>
-
-                <div className="flex items-end gap-3 mb-8">
-                  <div className="flex flex-col">
-                    <span className="text-2xl font-bold text-gray-300 line-through decoration-2 decoration-[var(--od-mid-blue)]/50">
-                      50
-                    </span>
-                  </div>
-
-                  <div className="mb-2 text-[var(--od-mid-blue)]">
-                    <ChevronRightIcon className="w-6 h-6" />
-                  </div>
-
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-6xl md:text-7xl font-sans font-bold text-[var(--od-dark-blue)]">
-                      <AnimatedCounter value={5000} duration={4} />
-                    </span>
-                    <span className="text-lg font-bold text-[var(--od-mid-blue)]">+</span>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex justify-between text-xs font-bold text-gray-400 uppercase tracking-widest">
-                    <span>Startup</span>
-                    <span>Scaleup</span>
-                    <span>Market Leader</span>
-                  </div>
-                  <div className="h-3 w-full rounded-full bg-gray-200/70 overflow-hidden relative">
-                    <div className="absolute inset-0 flex justify-between px-2">
-                      <div className="w-px h-full bg-white/60" />
-                      <div className="w-px h-full bg-white/60" />
-                    </div>
-                    <motion.div
-                      className="h-full bg-od-gradient"
-                      initial={{ width: "5%" }}
-                      whileInView={{ width: "100%" }}
-                      transition={{ duration: 3, ease: "circOut", delay: 0.2 }}
-                      viewport={{ once: true }}
-                    />
-                  </div>
-                  <p className="text-xs text-gray-500 font-medium italic">
-                    *Automated systems absorb demand spikes instantly.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <RevealPanel delay={0.05}>
+              <ScalingPeakCapacityCard fromValue={50} toValue={5000} />
+            </RevealPanel>
           </div>
 
           {/* Bottom-left: Point */}
           <div className="lg:col-start-1 lg:row-start-2">
-            <Article
-              title="Elastic Infrastructure"
-              body="Scaling destroys rigid systems. We provide a 'liquid' fulfillment layer that expands instantly. Black Friday surges, influencer drops, or sudden viral hits are no longer logistical threats—they are just revenue to be captured."
-            />
+            <RevealPanel delay={0.05}>
+              <div className="group relative overflow-hidden rounded-none border border-[var(--od-dark-blue)]/18 bg-white/65 backdrop-blur-md shadow-[0_20px_55px_rgba(0,59,92,0.10)] cursor-default transition-colors duration-500 hover:border-[var(--od-mid-blue)]/40 after:pointer-events-none after:absolute after:inset-3 after:rounded-none after:border after:border-dotted after:border-[var(--od-dark-blue)]/25 after:content-['']">
+                {/* slash behind content */}
+                <div
+                  className="pointer-events-none absolute -right-12 top-0 h-full w-[14rem] rotate-[20deg] bg-od-gradient opacity-20 transition-opacity duration-500 group-hover:opacity-30"
+                  aria-hidden="true"
+                />
+
+                {/* dots behind content */}
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_1px_1px,rgba(0,59,92,0.35)_1px,transparent_0)] bg-[length:18px_18px]"
+                  aria-hidden="true"
+                />
+
+                <div className="relative z-10 p-6 md:p-7">
+                    <div className="flex flex-col items-start gap-4">
+                      <div className="relative z-20 flex h-11 w-11 items-center justify-center rounded-none border border-[var(--od-dark-blue)]/18 bg-white/80 shadow-sm">
+                        <Image
+                          src={ARTICLES[0].iconSrc}
+                          alt={ARTICLES[0].iconAlt}
+                          width={26}
+                          height={26}
+                          className="h-[26px] w-[26px]"
+                        />
+                      </div>
+
+                      <h3 className="text-xl font-sans font-semibold text-[var(--od-dark-blue)] group-hover:text-[var(--od-mid-blue)] transition-colors duration-300">
+                        {ARTICLES[0].title}
+                      </h3>
+
+                      <p className="text-gray-600 leading-relaxed font-lato text-base md:text-lg">
+                        {ARTICLES[0].body}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+            </RevealPanel>
           </div>
 
           {/* Bottom-right: Point */}
           <div className="lg:col-start-2 lg:row-start-2">
-            <Article
-              title="Founder Freedom"
-              body="The ultimate benchmark of scale isn't volume—it's silence. Stop managing warehouse shifts. Stop packing boxes at 10 PM. Take a holiday. We professionalize the physical reality of your business so you can reclaim your role as CEO."
-            />
+            <RevealPanel delay={0.1}>
+              <div className="group relative overflow-hidden rounded-none border border-[var(--od-dark-blue)]/18 bg-white/65 backdrop-blur-md shadow-[0_20px_55px_rgba(0,59,92,0.10)] cursor-default transition-colors duration-500 hover:border-[var(--od-mid-blue)]/40 after:pointer-events-none after:absolute after:inset-3 after:rounded-none after:border after:border-dotted after:border-[var(--od-dark-blue)]/25 after:content-['']">
+                {/* slash behind content */}
+                <div
+                  className="pointer-events-none absolute -right-12 top-0 h-full w-[14rem] rotate-[20deg] bg-od-gradient opacity-20 transition-opacity duration-500 group-hover:opacity-30"
+                  aria-hidden="true"
+                />
+
+                {/* dots behind content */}
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_1px_1px,rgba(0,59,92,0.35)_1px,transparent_0)] bg-[length:18px_18px]"
+                  aria-hidden="true"
+                />
+
+                <div className="relative z-10 p-6 md:p-7">
+                    <div className="flex flex-col items-start gap-4">
+                      <div className="relative z-20 flex h-11 w-11 items-center justify-center rounded-none border border-[var(--od-dark-blue)]/18 bg-white/80 shadow-sm">
+                        <Image
+                          src={ARTICLES[1].iconSrc}
+                          alt={ARTICLES[1].iconAlt}
+                          width={26}
+                          height={26}
+                          className="h-[26px] w-[26px]"
+                        />
+                      </div>
+
+                      <h3 className="text-xl font-sans font-semibold text-[var(--od-dark-blue)] group-hover:text-[var(--od-mid-blue)] transition-colors duration-300">
+                        {ARTICLES[1].title}
+                      </h3>
+
+                      <p className="text-gray-600 leading-relaxed font-lato text-base md:text-lg">
+                        {ARTICLES[1].body}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+            </RevealPanel>
           </div>
         </div>
       </div>
     </section>
   )
-}
-
-function Article({ title, body }: { title: string, body: string }) {
-    return (
-        <RevealPanel>
-      <div className="group pl-6 border-l-2 border-[var(--od-dark-blue)]/10 hover:border-[var(--od-mid-blue)]/70 transition-colors duration-500 cursor-default">
-        <h3 className="text-xl font-semibold font-sans text-[var(--od-dark-blue)] mb-3 group-hover:text-[var(--od-mid-blue)] transition-colors duration-300">{title}</h3>
-                <p className="text-gray-600 leading-relaxed font-lato text-base md:text-lg">
-                    {body}
-                </p>
-            </div>
-        </RevealPanel>
-    )
-}
-
-// Simple internal icon component to avoid huge imports if not needed, 
-// but using Lucide via lucide-react as standard.
-function ChevronRightIcon({ className }: { className?: string }) {
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-            <path d="m9 18 6-6-6-6"/>
-        </svg>
-    )
 }

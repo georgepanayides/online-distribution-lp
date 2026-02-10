@@ -18,7 +18,7 @@ interface StepConfig {
   id: Phase;
   label: string;
   sub: string;
-  icon: any;
+  icon: React.ElementType;
   duration: number; // ms to stay on this step
 }
 
