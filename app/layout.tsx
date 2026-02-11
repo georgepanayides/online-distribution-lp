@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Lato, Outfit } from "next/font/google";
 import "./globals.css";
+import "swiper/css";
+import "swiper/css/navigation";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 

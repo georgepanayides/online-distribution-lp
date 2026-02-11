@@ -2,6 +2,7 @@
 import { PageHero } from "@/components/sections/PageHero";
 import { BrandsTicker } from "@/components/sections/BrandsTicker";
 import { CompanyStats } from "@/components/sections/CompanyStats";
+import { CaseStudies } from "@/components/sections/CaseStudies";
 import { Responsiveness } from "@/components/sections/Responsiveness";
 import { WarehouseBlueprint } from "@/components/sections/WarehouseBlueprint";
 import { ScalingPeak } from "@/components/sections/ScalingPeak";
@@ -9,7 +10,7 @@ import { Integrations } from "@/components/sections/Integrations";
 import { ComplianceGrid } from "@/components/sections/ComplianceGrid";
 import { Locations } from "@/components/sections/Locations";
 import { FAQs } from "@/components/sections/FAQs";
-import { Security } from "@/components/sections/Security";
+import { CTA } from "@/components/sections/CTA";
 
 
 export default function Home() {
@@ -35,13 +36,14 @@ export default function Home() {
         />
         <BrandsTicker />
         <CompanyStats />
+        <CaseStudies />
+        <Integrations />
+        <Locations />
         <Responsiveness />
         <WarehouseBlueprint />
         <ScalingPeak />
-        <Integrations />
         <ComplianceGrid />
-        <Locations />
-        <Security />
+        <CTA />
         <FAQs />
     </main>
   );

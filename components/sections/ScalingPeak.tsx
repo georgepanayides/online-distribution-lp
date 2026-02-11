@@ -1,5 +1,6 @@
 import { GridLines } from "@/components/ui/grid-lines";
 import { RevealPanel } from "@/components/ui/animations/RevealPanel";
+import { BentoIntersectionDots } from "@/components/ui/bento-intersection-dots";
 import { SectionKicker } from "@/components/ui/section-kicker";
 import { ScalingPeakCapacityCard } from "@/components/graphics/ScalingPeakCapacityCard";
 import Image from "next/image";
@@ -14,7 +15,7 @@ const ARTICLES = [
   {
     title: "Founder Freedom",
     body: "The ultimate benchmark of scale isn't volume—it's silence. Stop managing warehouse shifts. Stop packing boxes at 10 PM. Take a holiday. We professionalize the physical reality of your business so you can reclaim your role as CEO.",
-    iconSrc: "/icons/Target - Gradient.svg",
+    iconSrc: "/icons/Blue Cube - Colour.svg",
     iconAlt: "Focus",
   },
 ] as const;
@@ -51,86 +52,78 @@ export function ScalingPeak() {
             </RevealPanel>
           </div>
 
-          {/* Bottom-left: Point */}
-          <div className="lg:col-start-1 lg:row-start-2">
-            <RevealPanel delay={0.05}>
-              <div className="group relative overflow-hidden rounded-none border border-[var(--od-dark-blue)]/18 bg-white/65 backdrop-blur-md shadow-[0_20px_55px_rgba(0,59,92,0.10)] cursor-default transition-colors duration-500 hover:border-[var(--od-mid-blue)]/40 after:pointer-events-none after:absolute after:inset-3 after:rounded-none after:border after:border-dotted after:border-[var(--od-dark-blue)]/25 after:content-['']">
-                {/* slash behind content */}
-                <div
-                  className="pointer-events-none absolute -right-12 top-0 h-full w-[14rem] rotate-[20deg] bg-od-gradient opacity-20 transition-opacity duration-500 group-hover:opacity-30"
-                  aria-hidden="true"
-                />
+          {/* Bottom row: Two cards that touch */}
+          <div className="lg:col-start-1 lg:col-span-2 lg:row-start-2">
+            <div
+              id="scaling-peak-articles-bento"
+              className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-none border border-gray-200 bg-white/90 shadow-xl shadow-od-mid-blue/5 before:absolute before:inset-x-0 before:top-1/2 before:h-px before:bg-gray-200 lg:before:hidden lg:after:absolute lg:after:inset-y-0 lg:after:left-1/2 lg:after:w-px lg:after:bg-gray-200"
+            >
+              <div data-bento-item className="relative overflow-hidden">
+                  <div className="group relative">
+                    {/* slash behind content */}
+                    <div
+                      className="pointer-events-none absolute bg-od-mid-blue/90 h-100 w-60 rotate-20 right-0 -bottom-15 blur-xl -z-1"
+                      aria-hidden="true"
+                    />
 
-                {/* dots behind content */}
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_1px_1px,rgba(0,59,92,0.35)_1px,transparent_0)] bg-[length:18px_18px]"
-                  aria-hidden="true"
-                />
+                    <div className="relative z-10 p-6 md:p-7">
+                      <div className="flex flex-col items-start gap-4">
+                        <div className="relative z-20 flex h-11 w-11 items-center justify-center">
+                          <Image
+                            src={ARTICLES[0].iconSrc}
+                            alt={ARTICLES[0].iconAlt}
+                            width={26}
+                            height={26}
+                            className="h-[26px] w-[26px]"
+                          />
+                        </div>
 
-                <div className="relative z-10 p-6 md:p-7">
-                    <div className="flex flex-col items-start gap-4">
-                      <div className="relative z-20 flex h-11 w-11 items-center justify-center rounded-none border border-[var(--od-dark-blue)]/18 bg-white/80 shadow-sm">
-                        <Image
-                          src={ARTICLES[0].iconSrc}
-                          alt={ARTICLES[0].iconAlt}
-                          width={26}
-                          height={26}
-                          className="h-[26px] w-[26px]"
-                        />
+                        <h3 className="text-xl font-sans font-semibold text-[var(--od-dark-blue)] group-hover:text-[var(--od-mid-blue)] transition-colors duration-300">
+                          {ARTICLES[0].title}
+                        </h3>
+
+                        <p className="text-gray-600 leading-relaxed font-lato text-base">
+                          {ARTICLES[0].body}
+                        </p>
                       </div>
-
-                      <h3 className="text-xl font-sans font-semibold text-[var(--od-dark-blue)] group-hover:text-[var(--od-mid-blue)] transition-colors duration-300">
-                        {ARTICLES[0].title}
-                      </h3>
-
-                      <p className="text-gray-600 leading-relaxed font-lato text-base md:text-lg">
-                        {ARTICLES[0].body}
-                      </p>
                     </div>
                   </div>
-                </div>
-            </RevealPanel>
-          </div>
+              </div>
 
-          {/* Bottom-right: Point */}
-          <div className="lg:col-start-2 lg:row-start-2">
-            <RevealPanel delay={0.1}>
-              <div className="group relative overflow-hidden rounded-none border border-[var(--od-dark-blue)]/18 bg-white/65 backdrop-blur-md shadow-[0_20px_55px_rgba(0,59,92,0.10)] cursor-default transition-colors duration-500 hover:border-[var(--od-mid-blue)]/40 after:pointer-events-none after:absolute after:inset-3 after:rounded-none after:border after:border-dotted after:border-[var(--od-dark-blue)]/25 after:content-['']">
-                {/* slash behind content */}
-                <div
-                  className="pointer-events-none absolute -right-12 top-0 h-full w-[14rem] rotate-[20deg] bg-od-gradient opacity-20 transition-opacity duration-500 group-hover:opacity-30"
-                  aria-hidden="true"
-                />
+              <div data-bento-item className="relative overflow-hidden">
+                  <div className="group relative">
+                    {/* slash behind content */}
+                    <div
+                      className="pointer-events-none absolute bg-od-mid-blue/90 h-100 w-60 rotate-20 right-0 -bottom-15 blur-xl -z-1"
+                      aria-hidden="true"
+                    />
 
-                {/* dots behind content */}
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_1px_1px,rgba(0,59,92,0.35)_1px,transparent_0)] bg-[length:18px_18px]"
-                  aria-hidden="true"
-                />
+                    <div className="relative z-10 p-6 md:p-7">
+                      <div className="flex flex-col items-start gap-4">
+                        <div className="relative z-20 flex h-11 w-11 items-center justify-center">
+                          <Image
+                            src={ARTICLES[1].iconSrc}
+                            alt={ARTICLES[1].iconAlt}
+                            width={26}
+                            height={26}
+                            className="h-[26px] w-[26px]"
+                          />
+                        </div>
 
-                <div className="relative z-10 p-6 md:p-7">
-                    <div className="flex flex-col items-start gap-4">
-                      <div className="relative z-20 flex h-11 w-11 items-center justify-center rounded-none border border-[var(--od-dark-blue)]/18 bg-white/80 shadow-sm">
-                        <Image
-                          src={ARTICLES[1].iconSrc}
-                          alt={ARTICLES[1].iconAlt}
-                          width={26}
-                          height={26}
-                          className="h-[26px] w-[26px]"
-                        />
+                        <h3 className="text-xl font-sans font-semibold text-[var(--od-dark-blue)] group-hover:text-[var(--od-mid-blue)] transition-colors duration-300">
+                          {ARTICLES[1].title}
+                        </h3>
+
+                        <p className="text-gray-600 leading-relaxed font-lato text-base">
+                          {ARTICLES[1].body}
+                        </p>
                       </div>
-
-                      <h3 className="text-xl font-sans font-semibold text-[var(--od-dark-blue)] group-hover:text-[var(--od-mid-blue)] transition-colors duration-300">
-                        {ARTICLES[1].title}
-                      </h3>
-
-                      <p className="text-gray-600 leading-relaxed font-lato text-base md:text-lg">
-                        {ARTICLES[1].body}
-                      </p>
                     </div>
                   </div>
-                </div>
-            </RevealPanel>
+              </div>
+
+              <BentoIntersectionDots />
+            </div>
           </div>
         </div>
       </div>

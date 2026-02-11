@@ -50,7 +50,7 @@ const featuredConnectors = ["Shopify", "Amazon", "NetSuite", "Xero"] as const
 
 export function Integrations() {
   return (
-    <section className="relative w-full py-12 sm:py-24 bg-white overflow-hidden">
+    <section className="relative w-full py-12 sm:py-24 overflow-hidden bg-[linear-gradient(180deg,#f7faff_0%,#ffffff_55%,#f2f7ff_100%)]">
         <GridLines lineColor="border-od-dark-blue" opacity={0.08} />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-0">
             {/* Header */}

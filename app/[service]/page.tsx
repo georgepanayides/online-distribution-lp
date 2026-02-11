@@ -6,6 +6,7 @@ import { BrandsTicker } from "@/components/sections/BrandsTicker";
 import { Integrations } from "@/components/sections/Integrations";
 import { Locations } from "@/components/sections/Locations";
 import { Security } from "@/components/sections/Security";
+import { CTA } from "@/components/sections/CTA";
 
 const SERVICE_PAGES: Record<
 	string,
@@ -72,6 +73,7 @@ export default async function ServicePage({
 					<BrandsTicker />
 					<Integrations />
 					<Locations />
+					<CTA />
 				</>
 			)}
 		</main>

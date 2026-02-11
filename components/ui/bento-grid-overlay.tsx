@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 
 /**
  * Renders pulsing dots at the internal grid intersections of a container using CSS Grid/Flex.
@@ -112,30 +111,18 @@ export function BentoGridOverlay({ containerId }: { containerId: string }) {
 
   return (
     <div className="absolute inset-0 pointer-events-none z-50">
-      {dots.map((dot, i) => (
-        <motion.div
+      {dots.map((dot) => (
+        <div
           key={`${dot.x}-${dot.y}`}
-          className="absolute w-3 h-3 -ml-1.5 -mt-1.5 flex items-center justify-center"
+          className="absolute -translate-x-1/2 -translate-y-1/2"
           style={{ left: dot.x, top: dot.y }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          aria-hidden="true"
         >
-             {/* Inner solid dot */}
-            <div className="h-1.5 w-1.5 rounded-full bg-od-mid-blue/15" />
-            
-            {/* Pulsing ring */}
-            <motion.div
-                className="absolute inset-0 rounded-full border border-od-mid-blue/8"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: [0, 1, 0], scale: [0.8, 1.4, 1.4] }}
-                transition={{
-                duration: 2,
-                ease: "easeOut",
-                repeat: Infinity,
-                delay: i * 0.1, // Stagger effect
-                }}
-            />
-        </motion.div>
+          <span className="relative flex h-2 w-2 items-center justify-center">
+            <span className="absolute inline-flex h-full w-full rounded-full border border-od-mid-blue/15 bg-od-mid-blue/5 animate-ping" />
+            <span className="h-1.5 w-1.5 rounded-full bg-od-bright-blue/50 animate-pulse" />
+          </span>
+        </div>
       ))}
     </div>
   );

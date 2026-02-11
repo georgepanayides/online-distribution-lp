@@ -70,6 +70,26 @@ export function Locations() {
           <p className="text-lg font-lato text-gray-600 leading-relaxed max-w-2xl">
             With strategically located fulfilment centres across Auckland and Christchurch, we run a national 3PL network that puts inventory closer to customers — and keeps service levels predictable.
           </p>
+
+          {/* Head office card */}
+          <div className="mt-6 max-w-sm">
+            <div className="relative overflow-hidden rounded-none border border-gray-200 bg-white/25 backdrop-blur-[1px] shadow-xl shadow-od-mid-blue/5">
+              <div className="p-4 md:p-4">
+                <p className="text-[10px] font-sans font-bold uppercase tracking-widest text-od-mid-blue">
+                  Head Office
+                </p>
+
+                <div className="mt-2">
+                  <p className="font-sans font-semibold text-[13px] leading-snug text-[color:var(--od-dark-blue)]">
+                    {LOCATIONS.office.name}
+                  </p>
+                  <p className="mt-1 font-lato text-[13px] text-gray-600 leading-snug">
+                    {LOCATIONS.office.address}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         </div>
       </div>
